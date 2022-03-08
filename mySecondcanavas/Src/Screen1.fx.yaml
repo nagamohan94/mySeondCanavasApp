@@ -1,0 +1,44 @@
+Screen1 As screen:
+
+    NavigationBar_1 As NavigationBar:
+        Height: =768
+        ZIndex: =2
+
+    ComboBox1 As combobox:
+        DefaultSelectedItems: =
+        DisplayFields: =["DisplayName"]
+        IsSearchable: =false
+        Items: =Office365Users.SearchUser()
+        SearchFields: =["DisplayName"]
+        SearchItems: =[]
+        X: =1028
+        Y: =314
+        ZIndex: =3
+
+    screenshot1 As screenshot:
+        ButtonText: ="takescrennshot"
+        DisplayMode: =DisplayMode.Edit
+        Height: =68
+        OnChange: |+
+            =ClearCollect(ImageCollection,{Name: "screenshot.jpg", ContentBytes: screenshot1.OutPut, '@odata.type':""});
+            Office365Outlook.SendEmailV2(Concat(ComboBox1.SelectedItems,Mail,";"),"Screenshot from Canvas App","Attached is the screenshot from the canvas app screen.",{Attachments: ImageCollection})
+            
+        Width: =200
+        X: =1133
+        Y: =0
+        ZIndex: =4
+
+    Button3 As button:
+        OnSelect: =
+        Text: ="Button"
+        X: =636
+        Y: =506
+        ZIndex: =5
+
+    Dropdown1 As dropdown:
+        Default: =Text(Now(),"dddd")
+        Items: =ComboBox1.SelectedItems
+        X: =1028
+        Y: =172
+        ZIndex: =7
+

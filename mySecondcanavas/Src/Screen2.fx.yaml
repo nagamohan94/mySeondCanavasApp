@@ -1,0 +1,10 @@
+Screen2 As screen:
+
+    Label1 As label:
+        Align: =Align.Center
+        Height: =80
+        Size: =46
+        Text: ="Text"
+        Width: =1366
+        ZIndex: =1
+
