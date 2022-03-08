@@ -1,0 +1,115 @@
+Screen1 As screen:
+
+    NavigationBar_1 As NavigationBar:
+        Height: =768
+        ZIndex: =2
+
+    ComboBox1 As combobox:
+        DefaultSelectedItems: =
+        DisplayFields: =["DisplayName"]
+        IsSearchable: =false
+        Items: =Office365Users.SearchUser()
+        SearchFields: =["DisplayName"]
+        SearchItems: =[]
+        X: =1028
+        Y: =314
+        ZIndex: =3
+
+    screenshot1 As screenshot:
+        ButtonText: ="takescrennshot"
+        DisplayMode: =DisplayMode.Edit
+        Height: =68
+        OnChange: |+
+            =ClearCollect(ImageCollection,{Name: "screenshot.jpg", ContentBytes: screenshot1.OutPut, '@odata.type':""});
+            Office365Outlook.SendEmailV2(Concat(ComboBox1.SelectedItems,Mail,";"),"Screenshot from Canvas App","Attached is the screenshot from the canvas app screen.",{Attachments: ImageCollection})
+            
+        Width: =200
+        X: =1133
+        Y: =0
+        ZIndex: =4
+
+    Button3 As button:
+        OnSelect: =
+        Text: ="Button"
+        X: =636
+        Y: =506
+        ZIndex: =5
+
+    "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =375
+        Items: =dr
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =342
+        X: =336
+        Y: =40
+        ZIndex: =6
+
+        Image2 As image:
+            Height: =128
+            Image: =ThisItem.'Entity Image'
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Full Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image2.Width - 104
+            X: =Image2.X + Image2.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title3.Width
+            X: =Title3.X
+            Y: =Title3.Y + Title3.Height + 4
+            ZIndex: =3
+
+        NextArrow3 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator3 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Dropdown1 As dropdown:
+        Default: =Text(Now(),"dddd")
+        Items: =ComboBox1.SelectedItems.
+        X: =1028
+        Y: =172
+        ZIndex: =7
+

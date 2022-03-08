@@ -1,0 +1,39 @@
+NotificationBar As CanvasComponent:
+    Fill: =RGBA(153, 160, 196, 1)
+    Height: =250
+    notification: ="Are You sure?you want navigate? "
+    PopHeader: ="Cofirmation Bar.!"
+    Width: =450
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Label2 As label:
+        Text: =NotificationBar.PopHeader
+        Width: =419
+        X: =20
+        Y: =20
+        ZIndex: =1
+
+    Label3 As label:
+        Height: =35
+        Text: =NotificationBar.notification
+        Width: =419
+        X: =20
+        Y: =105
+        ZIndex: =2
+
+    Button1 As button:
+        Fill: =RGBA(127, 178, 57, 1)
+        Text: ="OK"
+        X: =245
+        Y: =185
+        ZIndex: =3
+
+    Button2 As button:
+        Fill: =RGBA(221, 79, 14, 1)
+        Text: ="Cancel"
+        X: =40
+        Y: =185
+        ZIndex: =4
+
